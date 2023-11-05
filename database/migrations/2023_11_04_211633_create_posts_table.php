@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
+            // $table->string('category_id');
             $table->string('title');
             $table->text('body');
-            $table->integer('price');
-            $table->integer('number');
+            // $table->integer('price');
+            // $table->integer('number');
             $table->string('image');
-            $table->text('request');
+            // $table->text('request');
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnUpdate()
