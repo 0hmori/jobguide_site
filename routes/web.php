@@ -28,11 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('posts', PostController::class)
-    ->only(['create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware('auth');
+// 追加したコード
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+    Route::resource('posts', PostController::class)
+        ->only(['create', 'store', 'edit', 'update', 'destroy'])
+        ->middleware('auth');
 
-Route::resource('posts', PostController::class)
-    ->only(['show', 'index']);
+    Route::resource('posts', PostController::class)
+        ->only(['show', 'index']);
+});
 
 require __DIR__ . '/auth.php';
