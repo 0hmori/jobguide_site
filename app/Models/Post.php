@@ -12,7 +12,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'body',
+        'body', 'price', 'number', 'request', 'user_id'
     ];
 
     public function user()

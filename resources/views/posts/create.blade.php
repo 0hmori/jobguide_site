@@ -35,7 +35,7 @@
                 <label class="block text-gray-700 text-sm mb-2" for="price">
                     サービス価格
                 </label>
-                <input type="integer" name="price"
+                <input type="number" name="price"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     required placeholder="サービス価格" value="{{ old('price') }}">
             </div>
@@ -43,7 +43,7 @@
                 <label class="block text-gray-700 text-sm mb-2" for="number">
                     予定作業人数
                 </label>
-                <input type="integer" name="number"
+                <input type="number" name="number"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     required placeholder="予定作業人数" value="{{ old('number') }}">
             </div>

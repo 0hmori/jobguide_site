@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class, 'index'])
     ->name('root');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,14 +28,35 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// 追加したコード
-Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
-    Route::resource('posts', PostController::class)
-        ->only(['create', 'store', 'edit', 'update', 'destroy'])
-        ->middleware('auth');
+// 最初に追加したコード
+// Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+//     Route::resource('posts', PostController::class)
+//         ->only(['create', 'store', 'edit', 'update', 'destroy'])
+//         ->middleware('auth');
 
-    Route::resource('posts', PostController::class)
-        ->only(['show', 'index']);
+//     Route::resource('posts', PostController::class)
+//         ->only(['show', 'index']);
+// });
+
+// 次に追加したコード
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        $role = auth()->user()->role;
+
+        if ($role == 'admin') {
+            return view('admin.dashboard'); // Admin用のダッシュボードへ
+        } elseif ($role == 'user') {
+            return view('user.dashboard'); // User用のダッシュボードへ
+        }
+    })->name('dashboard');
+
+    Route::middleware('can:user-higher')->group(function () {
+        Route::resource('posts', PostController::class)
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);
+
+        Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    });
 });
 
 require __DIR__ . '/auth.php';

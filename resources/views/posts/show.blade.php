@@ -15,6 +15,15 @@
             </p>
             <img src="{{ $post->image_url }}" alt="" class="mb-4">
             <p class="text-gray-700 text-base">{!! nl2br(e($post->body)) !!}</p>
+            
+            <!-- 追加：サービス価格 -->
+            <p class="text-gray-700 text-base">サービス価格: {{ $post->price }}</p>
+
+            <!-- 追加：予定作業人数 -->
+            <p class="text-gray-700 text-base">予定作業人数: {{ $post->number }}</p>
+
+            <!-- 追加：購入にあたってのお願い -->
+            <p class="text-gray-700 text-base">購入にあたってのお願い: {!! nl2br(e($post->request)) !!}</p>
         </article>
         <div class="flex flex-row text-center my-4">
             @can('update', $post)

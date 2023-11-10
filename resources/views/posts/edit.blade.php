@@ -25,6 +25,30 @@
                     required placeholder="本文">{{ old('body', $post->body) }}</textarea>
             </div>
             <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="price">
+                    サービス価格
+                </label>
+                <input type="number" name="price"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required placeholder="サービス価格" value="{{ old('price', $post->price) }}">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="number">
+                    予定作業人数
+                </label>
+                <input type="number" name="number"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required placeholder="予定作業人数" value="{{ old('number', $post->number) }}">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="request">
+                    購入にあたってのお願い
+                </label>
+                <textarea name="request" rows="10"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required placeholder="ユーザーに必ず書いてほしい情報、事業所でできること・できないこと、などを記載してください">{{ old('request', $post->request) }}</textarea>
+            </div>
+            <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="image">
                     画像
                 </label>
