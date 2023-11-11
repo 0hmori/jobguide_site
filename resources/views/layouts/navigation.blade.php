@@ -40,12 +40,12 @@
                         @auth
                             @can('seller')
                                 <x-dropdown-link :href="route('posts.create')">
-                                    {{ __('出品する') }}
+                                    {{ __('出品サービスを登録する') }}
                                 </x-dropdown-link>
-                            @elsecan('buyer')
+                                {{-- @elsecan('buyer')
                                 <x-dropdown-link :href="route('posts.create')">
-                                    {{ __('購入する') }}
-                                </x-dropdown-link>
+                                    {{ __('サービスを購入する') }}
+                                </x-dropdown-link> --}}
                             @endcan
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -131,6 +131,8 @@
                     </x-responsive-nav-link>
                 </div>
             @endauth
+
         </div>
     </div>
+
 </nav>
