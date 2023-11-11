@@ -38,9 +38,15 @@
 
                         <!-- Authentication -->
                         @auth
-                            <x-dropdown-link :href="route('posts.create')">
-                                {{ __('Create Post') }}
-                            </x-dropdown-link>
+                            @can('seller')
+                                <x-dropdown-link :href="route('posts.create')">
+                                    {{ __('出品する') }}
+                                </x-dropdown-link>
+                            @elsecan('buyer')
+                                <x-dropdown-link :href="route('posts.create')">
+                                    {{ __('購入する') }}
+                                </x-dropdown-link>
+                            @endcan
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"

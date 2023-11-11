@@ -40,12 +40,12 @@
 
         <!-- User Type -->
         <div class="mt-4">
-            <x-input-label for="user_type" :value="__('User Type')" />
-            <select id="user_type" name="user_type" class="block mt-1 w-full">
-                <option value="buyer">購入者</option>
-                <option value="seller">出品者</option>
+            <x-input-label for="role" :value="__('Role')" />
+            <select id="role" name="role" class="block mt-1 w-full">
+                <option value="0">購入者</option>
+                <option value="1">出品者</option>
             </select>
-            <x-input-error :messages="$errors->get('user_type')" class="mt-2" />
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

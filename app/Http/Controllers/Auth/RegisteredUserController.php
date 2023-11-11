@@ -34,14 +34,14 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'user_type' => ['required', 'in:buyer,seller'], // 追加: ユーザータイプのバリデーション
+            'role' => ['required', 'in:0,1'], // 追加: ユーザータイプのバリデーション
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'user_type' => $request->user_type, // 追加: ユーザータイプの保存
+            'role' => $request->role, // 追加: ユーザータイプの保存
         ]);
 
         event(new Registered($user));

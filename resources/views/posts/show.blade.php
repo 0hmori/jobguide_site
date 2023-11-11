@@ -14,16 +14,17 @@
                 {{ $post->created_at }}
             </p>
             <img src="{{ $post->image_url }}" alt="" class="mb-4">
-            <p class="text-gray-700 text-base">{!! nl2br(e($post->body)) !!}</p>
-            
+            <p class="text-gray-700 text-base">【 サービス内容 】<br>{!! nl2br(e($post->body)) !!}</p>
+            <br>
             <!-- 追加：サービス価格 -->
-            <p class="text-gray-700 text-base">サービス価格: {{ $post->price }}</p>
-
+            <p class="text-gray-700 text-base">【 価 格 】<br>{{ $post->price }}円</p>
+            <br>
             <!-- 追加：予定作業人数 -->
-            <p class="text-gray-700 text-base">予定作業人数: {{ $post->number }}</p>
-
+            <p class="text-gray-700 text-base">【 予定作業人数】<br>{{ $post->number }}人</p>
+            <br>
             <!-- 追加：購入にあたってのお願い -->
-            <p class="text-gray-700 text-base">購入にあたってのお願い: {!! nl2br(e($post->request)) !!}</p>
+            <p class="text-gray-700 text-base">【 購入にあたってのお願い 】
+                <br> {!! nl2br(e($post->request)) !!}
         </article>
         <div class="flex flex-row text-center my-4">
             @can('update', $post)

@@ -74,5 +74,6 @@
     "Log In": "ログイン",
     "Sign Up": "アカウント登録",
     "Create Post":"出品する",
-    "pagination": ":total件中、:from~:to件表示"
+    "pagination": ":total件中、:from~:to件表示",
+    "Role":"ユーザー種別"
 }

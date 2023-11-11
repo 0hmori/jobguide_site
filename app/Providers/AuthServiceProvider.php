@@ -23,12 +23,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('admin-higher', function ($user) {
-            return ($user->role >= 1 && $user->role <= 10);
+        // 購入者
+        Gate::define('buyer', function ($user) {
+            return ($user->role == 0);
         });
-        // 一般ユーザー以上に許可
-        Gate::define('user-higher', function ($user) {
-            return ($user->role >= 0 && $user->role <= 100);
+        // 出品者
+        Gate::define('seller', function ($user) {
+            return ($user->role == 1);
         });
     }
 }
